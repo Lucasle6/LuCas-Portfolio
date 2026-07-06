@@ -20,7 +20,7 @@ export const projects: Project[] = [
     image: "/projects/eddyson.png",
   },
   {
-    title: "Autohaus Royal",
+    title: "CasAuto Real",
     description:
       "Full-stack car dealership platform — vehicle catalog with filters, test-drive booking and an admin panel.",
     tech: ["React", "NestJS", "MySQL"],
