@@ -22,6 +22,7 @@
   --font-sans: var(--font-fira-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-accent: var(--font-fraunces), ui-serif, Georgia, serif;
 }
 
 body {

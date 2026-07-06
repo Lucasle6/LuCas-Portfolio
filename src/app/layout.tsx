@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Fira_Sans, Geist_Mono } from "next/font/google";
+import { Sora, Fira_Sans, Geist_Mono, Fraunces } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -21,6 +21,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// italic-only on purpose: it exists for single accent words, not paragraphs
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["italic"],
+});
+
 export const metadata: Metadata = {
   title: "LuCas León — Frontend Developer",
   description:
@@ -35,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${firaSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${sora.variable} ${firaSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SmoothScroll />
