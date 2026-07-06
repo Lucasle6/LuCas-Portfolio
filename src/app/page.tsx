@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
+import WorkSection from "@/components/WorkSection";
 
 /*
   Placeholder sections: they exist so the navbar anchors already land
@@ -7,7 +8,6 @@ import Reveal from "@/components/Reveal";
   Each one gets replaced by a real section in a later lesson.
 */
 const placeholders = [
-  { id: "work", label: "Selected work", tinted: true },
   { id: "about", label: "About", tinted: false },
   { id: "contact", label: "Contact", tinted: true },
 ];
@@ -16,6 +16,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <WorkSection />
 
       {placeholders.map((section) => (
         <section
