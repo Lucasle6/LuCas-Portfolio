@@ -22,8 +22,8 @@ Mix of two references — colors from one, animation techniques from the other:
 2. ~~Scaffold~~ ✅ (this repo: Next.js 16.2.10, TS, Tailwind, App Router, src/, npm)
 3. ~~Design tokens~~ ✅ (navy/mint palette + Sora/Fira Sans/Geist Mono as `@theme` tokens in globals.css; token showcase in page.tsx until the Hero replaces it)
 4. ~~Static layout + Hero first~~ ✅ (Navbar/Footer in layout.tsx, Hero + placeholder sections in page.tsx, anchor nav with scroll-mt; still no animation)
-5. Animation in layers: ~~Lenis~~ ✅ (SmoothScroll client component: autoRaf, anchors offset -64, reduced-motion opt-out) → ~~scroll reveals~~ ✅ (Reveal client component: motion/react whileInView fade+rise, once:true, stagger via delay prop, reduced-motion fallback) → signature effects: ~~drifting work cards~~ ✅ (DriftCard: useScroll+useTransform parallax, per-card speed); glowing timeline + sticky accent shape pending
-6. Real content: ~~featured projects~~ ✅ (WorkSection + `lib/projects.ts`), about, contact
+5. Animation in layers: ~~Lenis~~ ✅ (SmoothScroll client component: autoRaf, anchors offset -64, reduced-motion opt-out) → ~~scroll reveals~~ ✅ (Reveal client component: motion/react whileInView fade+rise, once:true, stagger via delay prop, reduced-motion fallback) → signature effects: ~~drifting work cards~~ ✅ (DriftCard: useScroll+useTransform parallax, per-card speed); ~~glowing timeline~~ ✅ (Timeline: spring-driven scaleY fill + whileInView node ignition); sticky accent shape pending
+6. Real content: ~~featured projects~~ ✅ (WorkSection + `lib/projects.ts`), ~~about~~ ✅ (AboutSection: sticky bio + `lib/timeline.ts` grounded in real repo dates — user should review/edit the copy), contact
 7. Deploy (Vercel) + archive old Portffolio repo
 
 **Git workflow:** public repo at github.com/Lucasle6/LuCas-Portfolio (branch `main`). Commit + push at the end of each lesson — partial pushes are the norm, don't wait for finished sections.

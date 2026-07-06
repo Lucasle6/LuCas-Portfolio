@@ -1,3 +1,4 @@
+import AboutSection from "@/components/AboutSection";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import WorkSection from "@/components/WorkSection";
@@ -7,16 +8,14 @@ import WorkSection from "@/components/WorkSection";
   somewhere and the section rhythm (white / mint alternation) is visible.
   Each one gets replaced by a real section in a later lesson.
 */
-const placeholders = [
-  { id: "about", label: "About", tinted: false },
-  { id: "contact", label: "Contact", tinted: true },
-];
+const placeholders = [{ id: "contact", label: "Contact", tinted: true }];
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <WorkSection />
+      <AboutSection />
 
       {placeholders.map((section) => (
         <section
