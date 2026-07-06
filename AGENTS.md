@@ -25,6 +25,8 @@ Mix of two references — colors from one, animation techniques from the other:
 5. Animation in layers: ~~Lenis~~ ✅ (SmoothScroll client component: autoRaf, anchors offset -64, reduced-motion opt-out) → ~~scroll reveals~~ ✅ (Reveal client component: motion/react whileInView fade+rise, once:true, stagger via delay prop, reduced-motion fallback) → ~~signature effects~~ ✅ all three: drifting work cards (DriftCard: useScroll+useTransform parallax, per-card speed), glowing timeline (Timeline: spring-driven scaleY fill + whileInView node ignition), rotating accent shape (RotatingAccent: page-scroll-bound SVG asterisk in contact)
 6. ~~Real content~~ ✅: featured projects (WorkSection + `lib/projects.ts`), about (AboutSection: sticky bio + `lib/timeline.ts` grounded in real repo dates — user should review/edit the copy), contact (ContactSection: "Say hola." with Fraunces italic accent + mailto CTA)
 
+**Project preview images:** real screenshots in `public/projects/*.png` (1280x800, headless Chrome). Static sites: `chrome --headless=new --screenshot --virtual-time-budget=9000`. SPA/animated sites (CasAuto-Real) need real waits: puppeteer-core script pointing at installed Chrome, `networkidle2` + ~6s sleep. Profile photo = user's GitHub avatar at `public/profile.png`. To refresh a preview, recapture and overwrite.
+
 **Gotcha (Turbopack persistent cache):** if a newly added `@theme` token in globals.css doesn't generate its utility (even after restarting the dev server), wipe `.next` and restart — the persistent cache can serve stale compiled CSS.
 7. Deploy (Vercel) + archive old Portffolio repo
 

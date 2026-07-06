@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Timeline from "@/components/Timeline";
 import { timeline } from "@/lib/timeline";
@@ -24,6 +25,15 @@ export default function AboutSection() {
           {/* sticky: the bio holds still while the timeline scrolls past */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <Reveal>
+              <div className="relative mb-8 h-40 w-40 -rotate-2 overflow-hidden rounded-2xl border border-ink/10 shadow-lg shadow-navy/10">
+                <Image
+                  src="/profile.png"
+                  alt="José Luis Castañeda León"
+                  fill
+                  sizes="160px"
+                  className="object-cover"
+                />
+              </div>
               <p className="text-lg leading-8 text-ink-muted">
                 I&apos;m José Luis Castañeda León — a frontend developer who
                 found the craft building a website for an architecture studio,

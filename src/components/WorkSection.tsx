@@ -1,3 +1,4 @@
+import Image from "next/image";
 import DriftCard from "@/components/DriftCard";
 import Reveal from "@/components/Reveal";
 import { projects } from "@/lib/projects";
@@ -26,7 +27,21 @@ export default function WorkSection() {
               drift={i % 2 === 0 ? 24 : 56}
               className={i % 2 === 1 ? "sm:mt-12" : undefined}
             >
-              <article className="flex h-full flex-col rounded-2xl border border-ink/5 bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy/5">
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-8 transition-shadow hover:shadow-lg hover:shadow-navy/5">
+                {project.image && (
+                  // -mx-8/-mt-8 bleed the shot to the card edges past the padding
+                  <div className="relative -mx-8 -mt-8 mb-6 aspect-[16/10] overflow-hidden border-b border-ink/5">
+                    <Image
+                      src={project.image}
+                      alt={`Screenshot of ${project.title}`}
+                      fill
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      // first card can be the LCP on tall viewports — preload it
+                      priority={i === 0}
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                )}
                 <p className="font-mono text-xs text-ink-muted">
                   0{i + 1}
                 </p>
