@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sora, Fira_Sans, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const sora = Sora({
@@ -34,10 +35,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // scroll-smooth: native smooth anchor scrolling — Lenis replaces it later
-      className={`${sora.variable} ${firaSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${sora.variable} ${firaSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SmoothScroll />
         <Navbar />
         {children}
         <Footer />
