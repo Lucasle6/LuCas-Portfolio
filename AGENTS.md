@@ -32,7 +32,13 @@ Mix of two references — colors from one, animation techniques from the other:
 **Project preview images:** real screenshots in `public/projects/*.png` (1280x800, headless Chrome). Static sites: `chrome --headless=new --screenshot --virtual-time-budget=9000`. SPA/animated sites (CasAuto-Real) need real waits: puppeteer-core script pointing at installed Chrome, `networkidle2` + ~6s sleep. Profile photo = user's GitHub avatar at `public/profile.png`. To refresh a preview, recapture and overwrite.
 
 **Gotcha (Turbopack persistent cache):** if a newly added `@theme` token in globals.css doesn't generate its utility (even after restarting the dev server), wipe `.next` and restart — the persistent cache can serve stale compiled CSS.
-7. Deploy (Vercel) + archive old Portffolio repo
+7. ~~Deploy (Vercel) + archive old Portffolio repo~~ ✅ **PLAN COMPLETE** (2026-07-06)
+
+## Deployment
+- **Live:** https://lucas-portfolio-puce-ten.vercel.app (Vercel project `lucasles-projects/lucas-portfolio`, fully static prerender)
+- Deploy from CLI: `npx vercel deploy --prod --yes` (logged in as lucasle6). `.vercel/` and `.env.local` (OIDC token) are local-only.
+- **Auto-deploy on push is NOT wired yet:** `vercel git connect` fails because the Vercel GitHub App lacks access to this repo. To enable: Vercel dashboard → lucas-portfolio → Settings → Git → Connect, or grant repo access at github.com/settings/installations. Until then, push does not deploy — run the CLI command.
+- Old `Portffolio` repo archived on GitHub (its separate portffolio-psi.vercel.app deployment still exists under the user's Vercel account).
 
 **Git workflow:** public repo at github.com/Lucasle6/LuCas-Portfolio (branch `main`). Commit + push at the end of each lesson — partial pushes are the norm, don't wait for finished sections.
 
