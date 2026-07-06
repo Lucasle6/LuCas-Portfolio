@@ -67,6 +67,13 @@ export default function Hero() {
             >
               Get in touch
             </a>
+            <a
+              href="/jose-luis-castaneda-leon-cv.pdf"
+              download
+              className="inline-flex items-center px-2 py-3 text-sm font-medium text-ink-muted underline decoration-ink/20 underline-offset-4 transition-colors hover:text-navy hover:decoration-navy"
+            >
+              Download CV ↓
+            </a>
           </div>
         </Reveal>
       </div>

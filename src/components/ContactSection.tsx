@@ -35,6 +35,18 @@ export default function ContactSection() {
             j.cleon695@gmail.com
           </a>
         </Reveal>
+        <Reveal delay={0.4}>
+          <p className="mt-8 font-mono text-xs uppercase tracking-widest text-ink-muted">
+            or grab the{" "}
+            <a
+              href="/jose-luis-castaneda-leon-cv.pdf"
+              download
+              className="text-navy underline decoration-navy/25 underline-offset-4 transition-colors hover:decoration-navy"
+            >
+              CV ↓
+            </a>
+          </p>
+        </Reveal>
       </div>
     </section>
   );
