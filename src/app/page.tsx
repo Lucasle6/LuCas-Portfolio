@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Reveal from "@/components/Reveal";
 
 /*
   Placeholder sections: they exist so the navbar anchors already land
@@ -24,10 +25,12 @@ export default function Home() {
           className={`scroll-mt-16 ${section.tinted ? "bg-mint" : "bg-white"}`}
         >
           <div className="mx-auto w-full max-w-6xl px-6 py-32">
-            <p className="font-mono text-sm uppercase tracking-widest text-ink-muted">
-              {"// "}
-              {section.label} — coming soon
-            </p>
+            <Reveal>
+              <p className="font-mono text-sm uppercase tracking-widest text-ink-muted">
+                {"// "}
+                {section.label} — coming soon
+              </p>
+            </Reveal>
           </div>
         </section>
       ))}
