@@ -1,3 +1,5 @@
+import MagneticLetters from "@/components/MagneticLetters";
+
 const links = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
@@ -17,7 +19,7 @@ export default function Navbar() {
           href="#top"
           className="font-display text-lg font-bold tracking-tight text-navy"
         >
-          LuCas León
+          <MagneticLetters text="LuCas León" radius={36} strength={0.3} />
         </a>
         <ul className="flex items-center gap-6 sm:gap-8">
           {links.map((link) => (

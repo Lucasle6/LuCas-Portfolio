@@ -1,3 +1,5 @@
+import DotGrid from "@/components/DotGrid";
+import MagneticLetters from "@/components/MagneticLetters";
 import Reveal from "@/components/Reveal";
 
 const techTags = ["TypeScript", "React", "Next.js", "Tailwind CSS"];
@@ -15,28 +17,31 @@ export default function Hero() {
         className="absolute -top-40 right-[-10%] h-[480px] w-[480px] rounded-full bg-gradient-to-b from-navy/10 to-mint blur-3xl"
       />
 
+      {/* cursor-revealed dot grid (jocaibe technique, navy on light) */}
+      <DotGrid />
+
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-28 pt-24 sm:pt-32">
         <Reveal>
           <p className="font-mono text-sm uppercase tracking-widest text-ink-muted">
-            José Luis Castañeda León — Frontend Developer
+            Frontend Developer — Portfolio · 2026
           </p>
         </Reveal>
 
-        {/* The two-line statement: line 1 navy, line 2 gray (jocaibe technique) */}
+        {/* The name IS the headline now (jocaibe pattern), letter-magnetic */}
         <Reveal delay={0.1}>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight text-navy sm:text-7xl lg:text-8xl">
-            I build web interfaces
+            <MagneticLetters text="José Luis" />
             <span className="block text-ink-muted/70">
-              that feel effortless.
+              <MagneticLetters text="Castañeda León." />
             </span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.2}>
           <p className="mt-8 max-w-xl text-lg leading-8 text-ink-muted">
-            Frontend developer working with TypeScript, React and Next.js —
-            focused on fast, accessible products with careful attention to
-            detail.
+            I build web interfaces that feel effortless — working with
+            TypeScript, React and Next.js on fast, accessible products with
+            careful attention to detail.
           </p>
         </Reveal>
 
