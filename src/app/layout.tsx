@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Fira_Sans, Geist_Mono, Fraunces } from "next/font/google";
+import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -46,6 +47,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <SmoothScroll />
+        <CustomCursor />
         <Navbar />
         {children}
         <Footer />

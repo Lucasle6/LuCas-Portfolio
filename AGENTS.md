@@ -27,6 +27,8 @@ Mix of two references — colors from one, animation techniques from the other:
 
 **Hero name effects (jocaibe parity, added 2026-07-06):** the H1 is now the full name (statement moved into the paragraph). MagneticLetters: per-letter gaussian proximity scale (dock effect, max 1.22 under cursor, 90px radius; also on the navbar logo at radius 36). DotGrid: navy dot matrix revealed through a spring-trailed radial mask around the cursor, self-attaches listeners to its parent section. Both no-op under reduced motion.
 
+**Custom cursor (added 2026-07-06):** CustomCursor in the root layout — navy dot glued to the pointer + spring-trailing ring. Context variants via document-level pointerover: links/buttons grow the ring to 56px with an action glyph (↓ download, @ mailto, ↗ target=_blank), the hero h1 turns it into a 100px navy wash (dot hides). Native cursor hidden via html.has-custom-cursor (class added only when mounted: fine pointers, no reduced motion — touch/AT keep defaults).
+
 **Card hover physics (beyond the original plan, user asked to go big):** TiltCard client component wraps each work card inside DriftCard — pointer-tracked 3D tilt (±5° through springs, 900px perspective), cursor-following navy spotlight (useMotionTemplate radial-gradient), -8px lift on hover, 0.98 squash on tap; plus CSS micro-interactions (arrow nudge on links via named groups, navy shift on number/title, tag pills fill navy). All collapse under reduced motion.
 
 **CV:** `public/jose-luis-castaneda-leon-cv.pdf`, download links in hero CTA row + contact. To update, overwrite that file (source was Downloads/CV_Developer_JLCL.pdf).

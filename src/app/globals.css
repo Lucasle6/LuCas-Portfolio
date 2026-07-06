@@ -35,3 +35,16 @@ body {
   background-color: var(--color-navy);
   color: white;
 }
+
+/*
+  Only hide the native cursor when CustomCursor actually mounted —
+  it adds this class itself, and only on fine pointers without
+  reduced motion. Touch devices never lose their cursor (they have
+  none) and keyboard/AT users keep the default experience.
+*/
+@media (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none !important;
+  }
+}
