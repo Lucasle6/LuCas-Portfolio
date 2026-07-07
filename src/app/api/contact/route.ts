@@ -45,10 +45,10 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const { error } = await resend.emails.send({
     // resend.dev sender works without verifying a domain (free tier);
-    // replies go to the visitor thanks to reply_to
+    // replies go to the visitor thanks to replyTo
     from: "Portfolio <onboarding@resend.dev>",
     to: "j.cleon695@gmail.com",
-    reply_to: email,
+    replyTo: email,
     subject: `Portfolio contact — ${name.slice(0, 80)}`,
     text: `${message.slice(0, 5000)}\n\n— ${name} (${email})`,
   });
