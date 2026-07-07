@@ -17,13 +17,15 @@ export default function Hero() {
         className="absolute -top-40 right-[-10%] h-[480px] w-[480px] rounded-full bg-gradient-to-b from-navy/10 to-mint blur-3xl"
       />
 
-      {/* ghost monogram — blurred under the dot grid, so the cursor
+      {/* ghost monogram — same letterforms as the logo (Sora L, Fraunces
+          italic C), softly blurred under the dot grid so the cursor
           reveals the dots right on top of it */}
       <span
         aria-hidden
-        className="pointer-events-none absolute right-[2%] top-1/2 hidden -translate-y-1/2 select-none font-display text-[24rem] font-bold leading-none tracking-tighter text-navy/[0.06] blur-md lg:block"
+        className="pointer-events-none absolute right-[2%] top-1/2 hidden -translate-y-1/2 select-none font-display text-[24rem] font-bold leading-none tracking-tighter text-navy/[0.06] blur-sm lg:block"
       >
-        LC
+        L
+        <span className="font-accent font-medium italic">C</span>
       </span>
 
       {/* cursor-revealed dot grid (jocaibe technique, navy on light) */}
