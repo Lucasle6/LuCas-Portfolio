@@ -4,36 +4,42 @@ export type TimelineItem = {
   description: string;
 };
 
-// Grounded in real repo history — edit copy freely, keep it honest.
+// Grounded in the CV (CV_Developer_JLCL.pdf) — real career history.
 export const timeline: TimelineItem[] = [
   {
-    period: "2023",
-    title: "First lines on the web",
+    period: "2013 – 2017",
+    title: "Engineering roots",
     description:
-      "Built Deymar, a site for an architecture & design studio — HTML, CSS, and the discovery that interfaces are my thing.",
+      "B.Eng. in Mechatronics at Tecnológico de Monterrey — where building things (and debugging them) became a habit.",
   },
   {
-    period: "2024",
-    title: "Getting serious",
+    period: "2017 – 2018",
+    title: "First dev role",
     description:
-      "First portfolio plus small tools for the job hunt — learning React and the modern JavaScript ecosystem by shipping.",
+      "Junior frontend at Flex in Guadalajara — ES6, HTML5 and CSS3 on supply-chain tools, and first hands-on React.",
   },
   {
-    period: "2025",
-    title: "TypeScript first",
+    period: "2018 – 2023",
+    title: "Scale at Bosch",
     description:
-      "A framework-agnostic product filtering engine in plain TypeScript — pure logic, no UI library to lean on.",
+      "React and Angular SPAs for manufacturing platforms serving 5,000+ daily users — Redux, NgRx, a real testing culture, and mentoring juniors.",
   },
   {
-    period: "2026",
-    title: "Full-stack range",
+    period: "2023 – 2024",
+    title: "Berlin, new chapter",
     description:
-      "Shipped Autohaus Royal (React, NestJS, MySQL) and Mesa para Luis, a multilingual cooking journal with a Supabase-backed CMS.",
+      "Moved to Germany for an M.Sc. in Software Engineering at the University of Europe for Applied Sciences.",
+  },
+  {
+    period: "2024 – 2026",
+    title: "Karl Storz",
+    description:
+      "Frontend & fullstack on clinical internal tools — React, TypeScript, Clean Architecture, and GitLab CI/CD with 80%+ test coverage.",
   },
   {
     period: "Now",
-    title: "This site — and what comes next",
+    title: "Open to what's next",
     description:
-      "Building in public with Next.js 16, and looking for a team where craft and detail matter.",
+      "Berlin-based and available immediately — building in public and looking for a team where craft and detail matter.",
   },
 ];

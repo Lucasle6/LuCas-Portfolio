@@ -27,14 +27,14 @@ export default function AboutSection() {
             <Reveal>
               <MorphPhoto />
               <p className="text-lg leading-8 text-ink-muted">
-                I&apos;m José Luis Castañeda León — a frontend developer who
-                found the craft building a website for an architecture studio,
-                and never stopped.
+                I&apos;m José Luis Castañeda León — a frontend developer with
+                7+ years of experience, from Guadalajara to Berlin.
               </p>
               <p className="mt-6 text-lg leading-8 text-ink-muted">
-                Today I work in TypeScript, React and Next.js, with enough
-                backend — NestJS, Supabase, MySQL — to take a product from
-                idea to deployed. I care most about the details users feel but
+                I&apos;ve shipped React, Angular and TypeScript for Bosch and
+                Karl Storz — interfaces thousands of people use daily — with
+                enough backend (Node, Python, Go) to take a product from idea
+                to deployed. I care most about the details users feel but
                 never name: motion, speed, accessibility.
               </p>
             </Reveal>

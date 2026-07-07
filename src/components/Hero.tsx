@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-28 pt-24 sm:pt-32">
         <Reveal>
           <p className="font-mono text-sm uppercase tracking-widest text-ink-muted">
-            Frontend Developer — Portfolio · 2026
+            Frontend Developer · Berlin — Portfolio 2026
           </p>
         </Reveal>
 
@@ -39,9 +39,9 @@ export default function Hero() {
 
         <Reveal delay={0.2}>
           <p className="mt-8 max-w-xl text-lg leading-8 text-ink-muted">
-            I build web interfaces that feel effortless — working with
-            TypeScript, React and Next.js on fast, accessible products with
-            careful attention to detail.
+            I build web interfaces that feel effortless — seven years of
+            TypeScript, React and Angular, from Bosch&apos;s factory floors to
+            Karl Storz&apos;s clinical tools in Berlin.
           </p>
         </Reveal>
 
