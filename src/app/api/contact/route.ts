@@ -43,10 +43,12 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
+  // the from ADDRESS must stay ours (sending as the visitor's address
+  // would be spoofing — DMARC rejects it), but the display NAME can be
+  // theirs, so the inbox reads "Ana Recruiter" and Reply goes to them.
+  const fromName = name.replace(/[<>"\r\n]/g, "").slice(0, 60) || "Portfolio";
   const { error } = await resend.emails.send({
-    // resend.dev sender works without verifying a domain (free tier);
-    // replies go to the visitor thanks to replyTo
-    from: "Portfolio <onboarding@resend.dev>",
+    from: `${fromName} — via portfolio <onboarding@resend.dev>`,
     to: "j.cleon695@gmail.com",
     replyTo: email,
     subject: `Portfolio contact — ${name.slice(0, 80)}`,

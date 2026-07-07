@@ -106,7 +106,7 @@ export default function CustomCursor() {
       <motion.div
         aria-hidden
         style={{ x: rx, y: ry }}
-        className="pointer-events-none fixed left-0 top-0 z-[9998] mix-blend-multiply"
+        className="pointer-events-none fixed left-0 top-0 z-[10001] mix-blend-multiply"
       >
         <motion.div
           animate={{
@@ -136,7 +136,7 @@ export default function CustomCursor() {
       <motion.div
         aria-hidden
         style={{ x: mx, y: my }}
-        className="pointer-events-none fixed left-0 top-0 z-[9999]"
+        className="pointer-events-none fixed left-0 top-0 z-[10002]"
       >
         <motion.div
           animate={{

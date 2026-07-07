@@ -21,17 +21,19 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactFab() {
   const reduceMotion = useReducedMotion();
-  const [show, setShow] = useState(false);
+  // visible from the very first paint — it only steps aside while the
+  // contact section itself is on screen
+  const [show, setShow] = useState(true);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (y) => {
+  useMotionValueEvent(scrollY, "change", () => {
     const contact = document.getElementById("contact");
     const contactInView = contact
       ? contact.getBoundingClientRect().top < window.innerHeight * 0.7
       : false;
-    setShow(y > 500 && !contactInView);
+    setShow(!contactInView);
   });
 
   // close on Escape; keep the page from scrolling behind the dialog
