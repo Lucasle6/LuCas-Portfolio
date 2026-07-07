@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import {
   AnimatePresence,
   motion,
-  useMotionValueEvent,
   useReducedMotion,
   useScroll,
+  useSpring,
+  useTransform,
 } from "motion/react";
-import RotatingAccent from "@/components/RotatingAccent";
 
 /*
   jocaibe's floating companion button: fixed bottom-right, appears
@@ -21,20 +21,15 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactFab() {
   const reduceMotion = useReducedMotion();
-  // visible from the very first paint — it only steps aside while the
-  // contact section itself is on screen
-  const [show, setShow] = useState(true);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", () => {
-    const contact = document.getElementById("contact");
-    const contactInView = contact
-      ? contact.getBoundingClientRect().top < window.innerHeight * 0.7
-      : false;
-    setShow(!contactInView);
-  });
+  // unbounded: every scrolled pixel adds degrees, so the star never
+  // stops turning — smoothed through a spring
+  const rawRotate = useTransform(scrollY, (y) => y * 0.25);
+  const scrollRotate = useSpring(rawRotate, { stiffness: 80, damping: 20 });
 
   // close on Escape; keep the page from scrolling behind the dialog
   useEffect(() => {
@@ -84,22 +79,64 @@ export default function ContactFab() {
 
   return (
     <>
-      <AnimatePresence>
-        {(show || reduceMotion) && (
-          <motion.button
-            type="button"
-            onClick={openDialog}
-            initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.8 }}
-            transition={{ type: "spring", stiffness: 320, damping: 24 }}
-            className="fixed bottom-6 right-6 z-[9990] flex items-center gap-2.5 rounded-full bg-navy py-3 pl-4 pr-6 font-display text-sm font-bold text-white shadow-lg shadow-navy/30 transition-colors hover:bg-navy/90"
+      <motion.button
+        type="button"
+        onClick={openDialog}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
+        aria-label="Contact — say hola"
+        initial={reduceMotion ? false : { opacity: 0, y: -16, scale: 0.8 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: "spring", stiffness: 320, damping: 24 }}
+        className="fixed right-6 top-20 z-[9990] flex items-center rounded-full bg-navy text-white shadow-lg shadow-navy/30 transition-colors hover:bg-navy/90"
+      >
+        {/* the bubble sits before the icon: anchored right, it unfolds leftward */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.span
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "auto", opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 28 }}
+              className="overflow-hidden whitespace-nowrap font-display text-sm font-bold"
+            >
+              <span className="block pl-5">Say hola</span>
+            </motion.span>
+          )}
+        </AnimatePresence>
+
+        {/* outer span: endless scroll-driven rotation · inner svg: hover spin */}
+        <motion.span
+          style={{ rotate: reduceMotion ? 0 : scrollRotate }}
+          className="grid h-12 w-12 shrink-0 place-items-center"
+        >
+          <motion.svg
+            viewBox="0 0 100 100"
+            fill="none"
+            animate={hovered && !reduceMotion ? { rotate: 360 } : { rotate: 0 }}
+            transition={
+              hovered && !reduceMotion
+                ? { duration: 1.1, ease: "linear", repeat: Infinity }
+                : { duration: 0.5 }
+            }
+            className="h-5 w-5"
           >
-            <RotatingAccent className="h-4 w-4 text-white/80" />
-            Say hola
-          </motion.button>
-        )}
-      </AnimatePresence>
+            {[0, 30, 60, 90, 120, 150].map((deg) => (
+              <line
+                key={deg}
+                x1="50"
+                y1="6"
+                x2="50"
+                y2="94"
+                stroke="currentColor"
+                strokeWidth="9"
+                strokeLinecap="round"
+                transform={`rotate(${deg} 50 50)`}
+              />
+            ))}
+          </motion.svg>
+        </motion.span>
+      </motion.button>
 
       <AnimatePresence>
         {open && (
