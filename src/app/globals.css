@@ -47,4 +47,9 @@ body {
   .has-custom-cursor * {
     cursor: none !important;
   }
+  /* text fields keep the I-beam — a hidden caret target is disorienting */
+  .has-custom-cursor input,
+  .has-custom-cursor textarea {
+    cursor: text !important;
+  }
 }
