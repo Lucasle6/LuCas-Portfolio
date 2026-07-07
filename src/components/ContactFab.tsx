@@ -17,10 +17,13 @@ import RotatingAccent from "@/components/RotatingAccent";
   Opens a dialog whose submit composes an email via mailto: —
   no backend needed on a static site.
 */
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function ContactFab() {
   const reduceMotion = useReducedMotion();
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -43,16 +46,35 @@ export default function ContactFab() {
     };
   }, [open]);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const message = String(data.get("message") ?? "");
-    const subject = encodeURIComponent(`Portfolio contact — ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:j.cleon695@gmail.com?subject=${subject}&body=${body}`;
-    setOpen(false);
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+          company: data.get("company"), // honeypot
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("sent");
+      setTimeout(() => {
+        setOpen(false);
+        setStatus("idle");
+      }, 2200);
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  function openDialog() {
+    setStatus("idle");
+    setOpen(true);
   }
 
   const field =
@@ -64,7 +86,7 @@ export default function ContactFab() {
         {(show || reduceMotion) && (
           <motion.button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={openDialog}
             initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.8 }}
@@ -107,7 +129,26 @@ export default function ContactFab() {
                 Say <span className="font-accent font-medium italic">hola</span>.
               </h2>
 
+              {status === "sent" ? (
+                <div className="mt-6 rounded-xl bg-mint p-6">
+                  <p className="font-display text-lg font-bold text-navy">
+                    Message sent ✓
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-ink-muted">
+                    Thanks — I&apos;ll get back to you soon.
+                  </p>
+                </div>
+              ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+                {/* honeypot — hidden from humans, irresistible to bots */}
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
                 <label className="block">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-ink-muted">
                     Name
@@ -142,9 +183,10 @@ export default function ContactFab() {
                 <div className="flex items-center justify-between gap-4 pt-2">
                   <button
                     type="submit"
-                    className="rounded-full bg-navy px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-navy/90"
+                    disabled={status === "sending"}
+                    className="rounded-full bg-navy px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-navy/90 disabled:opacity-60"
                   >
-                    Send ↗
+                    {status === "sending" ? "Sending…" : "Send ↗"}
                   </button>
                   <button
                     type="button"
@@ -154,16 +196,19 @@ export default function ContactFab() {
                     Close
                   </button>
                 </div>
-                <p className="pt-1 text-xs leading-5 text-ink-muted">
-                  Opens your email app — or write directly to{" "}
-                  <a
-                    href="mailto:j.cleon695@gmail.com"
-                    className="text-navy underline decoration-navy/25 underline-offset-2"
-                  >
-                    j.cleon695@gmail.com
-                  </a>
-                </p>
+                {status === "error" && (
+                  <p className="pt-1 text-xs leading-5 text-[#BF3B2B]">
+                    Something went wrong — please email me directly at{" "}
+                    <a
+                      href="mailto:j.cleon695@gmail.com"
+                      className="underline underline-offset-2"
+                    >
+                      j.cleon695@gmail.com
+                    </a>
+                  </p>
+                )}
               </form>
+              )}
             </motion.div>
           </motion.div>
         )}
