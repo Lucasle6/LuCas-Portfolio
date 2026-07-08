@@ -46,13 +46,14 @@ export const projects: Project[] = [
     image: "/projects/mesa.png",
   },
   {
-    title: "Agnostic Filter Challenge",
+    title: "Deymar Arquitectura",
     description: {
-      en: "Framework-agnostic product filtering engine written in plain TypeScript, no UI library underneath.",
-      es: "Motor de filtrado de productos agnóstico al framework, escrito en TypeScript puro, sin librería de UI debajo.",
+      en: "Where it started — my first website, a marketing site for an architecture & interior design studio, with a full-screen project carousel.",
+      es: "Donde empezó todo — mi primera web, un sitio para un estudio de arquitectura e interiorismo, con un carrusel de proyectos a pantalla completa.",
     },
-    tech: ["TypeScript"],
-    // liveUrl pending: the GitHub Pages deploy is down (404) — restore once fixed
-    repoUrl: "https://github.com/Lucasle6/AgnosticFilterChallenge_Wallr",
+    tech: ["HTML", "CSS", "JavaScript"],
+    liveUrl: "https://lucasle6.github.io/Deymar/",
+    repoUrl: "https://github.com/Lucasle6/Deymar",
+    image: "/projects/deymar.png",
   },
 ];
