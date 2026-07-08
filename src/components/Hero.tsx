@@ -23,13 +23,13 @@ export default function Hero({ dict }: { dict: Dictionary }) {
           reveals the dots right on top of it */}
       <span
         aria-hidden
-        className="pointer-events-none absolute right-[2%] top-1/2 hidden -translate-y-1/2 select-none font-display text-[24rem] font-bold leading-none tracking-tighter text-navy/[0.06] blur-sm lg:block"
+        className="pointer-events-none absolute right-[2%] top-1/2 hidden -translate-y-1/2 select-none font-display text-[24rem] font-bold leading-none tracking-tighter text-navy/[0.06] blur-xs lg:block"
       >
         L
         <span className="font-accent font-medium italic">C</span>
       </span>
 
-      {/* cursor-revealed dot grid (jocaibe technique, navy on light) */}
+      {/* cursor-revealed dot grid ( technique, navy on light) */}
       <DotGrid />
 
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-28 pt-24 sm:pt-32">
@@ -39,7 +39,7 @@ export default function Hero({ dict }: { dict: Dictionary }) {
           </p>
         </Reveal>
 
-        {/* The name IS the headline (jocaibe pattern), letter-magnetic */}
+        {/* The name IS the headline (pattern), letter-magnetic */}
         <Reveal delay={0.1}>
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight text-navy sm:text-7xl lg:text-8xl">
             <MagneticLetters text="José Luis" />

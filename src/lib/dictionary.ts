@@ -9,7 +9,7 @@ const en = {
   meta: {
     title: "LuCas León — Frontend Developer",
     description:
-      "Portfolio of José Luis Castañeda León — frontend developer with 7+ years of React, Angular and TypeScript, from Guadalajara to Berlin.",
+      "Portfolio of José Luis Castañeda León frontend developer with 7+ years of React, Angular and TypeScript, from Guadalajara to Berlin.",
   },
   nav: {
     work: "Work",
@@ -19,7 +19,7 @@ const en = {
   hero: {
     eyebrow: "Frontend Developer · Berlin — Portfolio 2026",
     paragraph:
-      "I build web interfaces that feel effortless — seven years of TypeScript, React and Angular, from Bosch's factory floors to Karl Storz's clinical tools in Berlin.",
+      "I build web interfaces that feel effortless. Seven years of TypeScript, React and Angular, from Bosch's factory floors to Karl Storz's clinical tools in Berlin.",
     ctaWork: "See my work",
     ctaContact: "Get in touch",
     ctaCv: "Download CV ↓",
@@ -40,8 +40,8 @@ const en = {
     eyebrow: "About",
     headline1: "From a first website",
     headline2: "to full-stack products.",
-    bio1: "I'm José Luis Castañeda León — a frontend developer with 7+ years of experience, from Guadalajara to Berlin.",
-    bio2: "I've shipped React, Angular and TypeScript for Bosch and Karl Storz — interfaces thousands of people use daily — with enough backend (Node, Python, Go) to take a product from idea to deployed. I care most about the details users feel but never name: motion, speed, accessibility.",
+    bio1: "I'm José Luis Castañeda León, a frontend developer with 7+ years of experience, from Guadalajara to Berlin.",
+    bio2: "I've shipped React, Angular and TypeScript for Bosch and Karl Storz interfaces thousands of people use daily with enough backend (Node, Python, Go) to take a product from idea to deployed. I care most about the details users feel but never name: motion, speed, accessibility.",
   },
   contact: {
     eyebrow: "Contact",
@@ -61,19 +61,19 @@ const en = {
     close: "Close",
     sentTitle: "Message sent ✓",
     sentBody: "Thanks — I'll get back to you soon.",
-    errorBody: "Something went wrong — please email me directly at",
+    errorBody: "Something went wrong please email me directly at",
   },
   fab: {
-    label: "Contact — say hola",
+    label: "Contact say hola",
     bubble: "Say hola",
   },
 };
 
 const es: typeof en = {
   meta: {
-    title: "LuCas León — Desarrollador Frontend",
+    title: "LuCas León - Desarrollador Frontend",
     description:
-      "Portfolio de José Luis Castañeda León — desarrollador frontend con más de 7 años de React, Angular y TypeScript, de Guadalajara a Berlín.",
+      "Portfolio de José Luis Castañeda León desarrollador frontend con más de 7 años de React, Angular y TypeScript, de Guadalajara a Berlín.",
   },
   nav: {
     work: "Trabajo",
@@ -83,7 +83,7 @@ const es: typeof en = {
   hero: {
     eyebrow: "Desarrollador Frontend · Berlín — Portfolio 2026",
     paragraph:
-      "Construyo interfaces web que se sienten sin esfuerzo — siete años de TypeScript, React y Angular, de las plantas de Bosch a las herramientas clínicas de Karl Storz en Berlín.",
+      "Construyo interfaces web que se sienten sin esfuerzo, Siete años de TypeScript, React y Angular, de las plantas de Bosch a las herramientas clínicas de Karl Storz en Berlín.",
     ctaWork: "Ver mi trabajo",
     ctaContact: "Hablemos",
     ctaCv: "Descargar CV ↓",
@@ -104,8 +104,8 @@ const es: typeof en = {
     eyebrow: "Sobre mí",
     headline1: "De una primera web",
     headline2: "a productos full-stack.",
-    bio1: "Soy José Luis Castañeda León — desarrollador frontend con más de 7 años de experiencia, de Guadalajara a Berlín.",
-    bio2: "He construido con React, Angular y TypeScript para Bosch y Karl Storz — interfaces que miles de personas usan a diario — con suficiente backend (Node, Python, Go) para llevar un producto de la idea al deploy. Lo que más me importa son los detalles que los usuarios sienten pero no nombran: movimiento, velocidad, accesibilidad.",
+    bio1: "Soy José Luis Castañeda León , desarrollador frontend con más de 7 años de experiencia, de Guadalajara a Berlín.",
+    bio2: "He construido con React, Angular y TypeScript para Bosch y Karl Storz interfaces que miles de personas usan a diario con suficiente backend (Node, Python, Go) para llevar un producto de la idea al deploy. Lo que más me importa son los detalles que los usuarios sienten pero no nombran: movimiento, velocidad, accesibilidad.",
   },
   contact: {
     eyebrow: "Contacto",
