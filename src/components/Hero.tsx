@@ -23,7 +23,7 @@ export default function Hero({ dict }: { dict: Dictionary }) {
           reveals the dots right on top of it */}
       <span
         aria-hidden
-        className="pointer-events-none absolute right-[2%] top-1/2 hidden -translate-y-1/2 select-none font-display text-[24rem] font-bold leading-none tracking-tighter text-navy/[0.06] blur-xs lg:block"
+        className="pointer-events-none absolute right-[14%] top-1/2 hidden -translate-y-1/2 select-none font-display text-[24rem] font-bold leading-none tracking-tighter text-navy/[0.06] blur-xs lg:block"
       >
         L
         <span className="font-accent font-medium italic">C</span>
