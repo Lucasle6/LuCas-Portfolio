@@ -51,6 +51,9 @@ Mix of two references — colors from one, animation techniques from the other:
 ## i18n (added 2026-07-06)
 Route-based EN/ES: `src/app/[locale]/{layout,page}.tsx` (no plain root layout — html/body live in [locale]/layout with `lang`), both locales prerendered via generateStaticParams. All UI strings in `src/lib/dictionary.ts` (`es` is typed against `en`, so a missing translation is a build error); projects/timeline data carry per-locale text. Locale detection in **`src/proxy.ts`** — Next 16 renamed the middleware convention to `proxy` (export `proxy`, not `middleware`); it redirects locale-less paths by Accept-Language (es* → /es, else /en), matcher skips api/_next/files. Toggle in the navbar: EN / ES links with aria-current. Brand wink flips per language: EN says "Say *hola*", ES says "Di *hello*".
 
+## Deymar de-fork (2026-07-06)
+`Lucasle6/Deymar` was a fork of `luisleon6/Deymar` (user's lost original account). De-forked into a standalone repo: bare-cloned (291 MB — full-res architecture photos across history), renamed old fork → `Deymar-fork-old` (re-archived as backup), created fresh non-fork `Lucasle6/Deymar`, `git push --mirror` (23 commits), set default branch `master`, re-enabled legacy Pages → live again at same URL https://lucasle6.github.io/Deymar/. Now the first Work card (replaced Agnostic Filter, whose demo stayed down). Screenshot: `public/projects/deymar.png`.
+
 ## Deployment
 - **Live:** https://lucas-portfolio-puce-ten.vercel.app (Vercel project `lucasles-projects/lucas-portfolio`, fully static prerender)
 - Deploy from CLI: `npx vercel deploy --prod --yes` (logged in as lucasle6). `.vercel/` and `.env.local` (OIDC token) are local-only.
