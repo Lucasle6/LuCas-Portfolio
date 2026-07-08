@@ -16,6 +16,7 @@ import {
 } from "react-icons/si";
 import Reveal from "@/components/Reveal";
 import TechBadge from "@/components/TechBadge";
+import type { Dictionary } from "@/lib/dictionary";
 
 // stack straight from the CV, each with its brand color
 const tech = [
@@ -35,20 +36,21 @@ const tech = [
   { label: "GitLab CI", color: "#FC6D26", Icon: SiGitlab },
 ];
 
-export default function TechSection() {
+export default function TechSection({ dict }: { dict: Dictionary }) {
   return (
     <section id="tech" className="scroll-mt-16 bg-sage">
       <div className="mx-auto w-full max-w-6xl px-6 py-28">
         <Reveal>
           <p className="font-mono text-sm uppercase tracking-widest text-ink-muted">
-            {"// "}Technologies
+            {"// "}
+            {dict.tech.eyebrow}
           </p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-navy sm:text-5xl">
-            The everyday toolbox
+            {dict.tech.headline1}
             <span className="block text-ink-muted/70">
-              seven years in the making.
+              {dict.tech.headline2}
             </span>
           </h2>
         </Reveal>

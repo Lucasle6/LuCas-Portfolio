@@ -9,14 +9,6 @@ import {
   useSpring,
 } from "motion/react";
 
-/*
-  jocaibe's interactive grid, recolored: a navy dot matrix that only
-  exists inside a soft circle around the cursor — the mask position
-  runs through springs so the reveal trails the pointer. Listeners
-  attach to the parent section so this stays a drop-in decoration
-  (pointer-events-none, aria-hidden) and the parent stays a server
-  component.
-*/
 export default function DotGrid() {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();

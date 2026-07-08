@@ -1,12 +1,20 @@
+import Link from "next/link";
 import MagneticLetters from "@/components/MagneticLetters";
+import type { Dictionary, Locale } from "@/lib/dictionary";
 
-const links = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+export default function Navbar({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const links = [
+    { label: dict.nav.work, href: "#work" },
+    { label: dict.nav.about, href: "#about" },
+    { label: dict.nav.contact, href: "#contact" },
+  ];
 
-export default function Navbar() {
   return (
     /*
       sticky + backdrop-blur: the bar stays pinned while content
@@ -21,18 +29,48 @@ export default function Navbar() {
         >
           <MagneticLetters text="LuCas León" radius={36} strength={0.3} />
         </a>
-        <ul className="flex items-center gap-6 sm:gap-8">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm font-medium text-ink-muted transition-colors hover:text-navy"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-5 sm:gap-8">
+          <ul className="flex items-center gap-5 sm:gap-8">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm font-medium text-ink-muted transition-colors hover:text-navy"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {/* language toggle: full navigation to the other locale's route */}
+          <div className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider">
+            <Link
+              href="/en"
+              aria-current={locale === "en" ? "true" : undefined}
+              className={
+                locale === "en"
+                  ? "font-bold text-navy"
+                  : "text-ink-muted transition-colors hover:text-navy"
+              }
+            >
+              EN
+            </Link>
+            <span aria-hidden className="text-ink-muted/50">
+              /
+            </span>
+            <Link
+              href="/es"
+              aria-current={locale === "es" ? "true" : undefined}
+              className={
+                locale === "es"
+                  ? "font-bold text-navy"
+                  : "text-ink-muted transition-colors hover:text-navy"
+              }
+            >
+              ES
+            </Link>
+          </div>
+        </div>
       </nav>
     </header>
   );

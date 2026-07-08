@@ -11,15 +11,17 @@ import {
 } from "motion/react";
 
 /*
-  jocaibe's floating companion button: fixed bottom-right, appears
+  floating companion button: fixed bottom-right, appears
   once you've scrolled past the hero, hides again when the real
   contact section is on screen (it would be redundant there).
   Opens a dialog whose submit composes an email via mailto: —
   no backend needed on a static site.
 */
+import type { Dictionary } from "@/lib/dictionary";
+
 type Status = "idle" | "sending" | "sent" | "error";
 
-export default function ContactFab() {
+export default function ContactFab({ dict }: { dict: Dictionary }) {
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -84,7 +86,7 @@ export default function ContactFab() {
         onClick={openDialog}
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
-        aria-label="Contact — say hola"
+        aria-label={dict.fab.label}
         initial={reduceMotion ? false : { opacity: 0, y: -16, scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ type: "spring", stiffness: 320, damping: 24 }}
@@ -100,7 +102,7 @@ export default function ContactFab() {
               transition={{ type: "spring", stiffness: 300, damping: 28 }}
               className="overflow-hidden whitespace-nowrap font-display text-sm font-bold"
             >
-              <span className="block pl-5">Say hola</span>
+              <span className="block pl-5">{dict.fab.bubble}</span>
             </motion.span>
           )}
         </AnimatePresence>
@@ -162,19 +164,24 @@ export default function ContactFab() {
               className="w-full max-w-md rounded-2xl border border-ink/5 bg-white p-8 shadow-2xl shadow-navy/20"
             >
               <p className="font-mono text-xs uppercase tracking-widest text-ink-muted">
-                {"// "}Contact
+                {"// "}
+                {dict.contact.eyebrow}
               </p>
               <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-navy">
-                Say <span className="font-accent font-medium italic">hola</span>.
+                {dict.contact.say}{" "}
+                <span className="font-accent font-medium italic">
+                  {dict.contact.holaWord}
+                </span>
+                .
               </h2>
 
               {status === "sent" ? (
                 <div className="mt-6 rounded-xl bg-mint p-6">
                   <p className="font-display text-lg font-bold text-navy">
-                    Message sent ✓
+                    {dict.form.sentTitle}
                   </p>
                   <p className="mt-1 text-sm leading-6 text-ink-muted">
-                    Thanks — I&apos;ll get back to you soon.
+                    {dict.form.sentBody}
                   </p>
                 </div>
               ) : (
@@ -190,7 +197,7 @@ export default function ContactFab() {
                 />
                 <label className="block">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-ink-muted">
-                    Name
+                    {dict.form.name}
                   </span>
                   <input
                     name="name"
@@ -202,7 +209,7 @@ export default function ContactFab() {
                 </label>
                 <label className="block">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-ink-muted">
-                    Email
+                    {dict.form.email}
                   </span>
                   <input
                     name="email"
@@ -214,7 +221,7 @@ export default function ContactFab() {
                 </label>
                 <label className="block">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-ink-muted">
-                    Message
+                    {dict.form.message}
                   </span>
                   <textarea name="message" required rows={4} className={field} />
                 </label>
@@ -225,19 +232,19 @@ export default function ContactFab() {
                     disabled={status === "sending"}
                     className="rounded-full bg-navy px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-navy/90 disabled:opacity-60"
                   >
-                    {status === "sending" ? "Sending…" : "Send ↗"}
+                    {status === "sending" ? dict.form.sending : dict.form.send}
                   </button>
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
                     className="text-sm font-medium text-ink-muted transition-colors hover:text-navy"
                   >
-                    Close
+                    {dict.form.close}
                   </button>
                 </div>
                 {status === "error" && (
                   <p className="pt-1 text-xs leading-5 text-[#BF3B2B]">
-                    Something went wrong — please email me directly at{" "}
+                    {dict.form.errorBody}{" "}
                     <a
                       href="mailto:j.cleon695@gmail.com"
                       className="underline underline-offset-2"

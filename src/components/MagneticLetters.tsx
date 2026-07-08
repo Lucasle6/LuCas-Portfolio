@@ -13,7 +13,7 @@ type MagneticLettersProps = {
 };
 
 /*
-  jocaibe's name effect: each letter scales up as the cursor gets near,
+  Name effect: each letter scales up as the cursor gets near,
   with a gaussian falloff so neighbours grow progressively less — a
   horizontal macOS-dock. Measured per pointermove (rects stay accurate
   after font loads/resizes); a short CSS transition smooths the motion.

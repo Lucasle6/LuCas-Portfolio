@@ -13,8 +13,8 @@ Personal portfolio of **José Luis Castañeda León** (GitHub: Lucasle6, LinkedI
 
 ## Design direction
 Mix of two references — colors from one, animation techniques from the other:
-- **Palette (from briceclain.com):** light theme. White base, deep navy `#020073` as the hero accent, soft blue gradients, pale mint section tints (`#F5FFF8`, `#F6F9F7`), soft grays. Warm, approachable, professional.
-- **Animations (from jocaibe.com):** Lenis smooth scroll, scroll-driven reveals, huge two-line statement typography (second line in gray), glowing vertical timeline with nodes, uppercase mono tech tags, drifting project cards on scroll, sticky rotating accent shape, big italic-accent contact headline. Take the *techniques*, recolor them navy — not lime/dark.
+- **Palette:** light theme. White base, deep navy `#020073` as the hero accent, soft blue gradients, pale mint section tints (`#F5FFF8`, `#F6F9F7`), soft grays. Warm, approachable, professional.
+- **Animations:** Lenis smooth scroll, scroll-driven reveals, huge two-line statement typography (second line in gray), glowing vertical timeline with nodes, uppercase mono tech tags, drifting project cards on scroll, sticky rotating accent shape, big italic-accent contact headline. Take the *techniques*, recolor them navy — not lime/dark.
 - Distinctive bet: most animated portfolios are dark; this one is light with fine-grained motion.
 
 ## Build plan (agreed with the user)
@@ -29,9 +29,9 @@ Mix of two references — colors from one, animation techniques from the other:
 
 **LC monogram (redesigned 2026-07-06):** the logo encodes the brand — Sora Bold "L" + Fraunces Italic "C" (the site's typographic duality), the signature asterisk sparking off the C in #8fa4ff, on a navy→#2743e3 gradient tile with the dot-grid texture masked into the lower-right corner. Favicon via App Router convention: `src/app/icon.png` (512px, transparent corners; default favicon.ico removed) — regenerate with scratchpad logo.html + puppeteer if the brand changes. A ghost version (text with the same mixed letterforms, text-navy/[0.06], blur-sm = 8px in Tailwind v4, 24rem, lg+ only) sits in the hero between the gradient blob and the DotGrid, so the cursor reveals dots on top of it.
 
-**Hero name effects (jocaibe parity, added 2026-07-06):** the H1 is now the full name (statement moved into the paragraph). MagneticLetters: per-letter gaussian proximity scale (dock effect, max 1.22 under cursor, 90px radius; also on the navbar logo at radius 36). DotGrid: navy dot matrix revealed through a spring-trailed radial mask around the cursor, self-attaches listeners to its parent section. Both no-op under reduced motion.
+**Hero name effects (parity, added 2026-07-06):** the H1 is now the full name (statement moved into the paragraph). MagneticLetters: per-letter gaussian proximity scale (dock effect, max 1.22 under cursor, 90px radius; also on the navbar logo at radius 36). DotGrid: navy dot matrix revealed through a spring-trailed radial mask around the cursor, self-attaches listeners to its parent section. Both no-op under reduced motion.
 
-**Contact FAB + form (jocaibe's floating companion, redesigned 2026-07-06):** ContactFab in the root layout — fixed TOP-right (top-20 right-6, below the navbar), icon-only asterisk button, always visible. Hover: a "Say hola" bubble unfolds leftward (width 0→auto, right-anchored) and the asterisk spins continuously (inner svg, 1.1s linear loop). Scroll: unbounded rotation, scrollY×0.25° through a spring (outer span) — inner and outer transforms compose. Opens a modal dialog (AnimatePresence, Escape/backdrop close, data-lenis-prevent, html overflow lock). Inputs keep cursor:text under the custom cursor; cursor z-index (10001/10002) sits above the dialog overlay (10000).
+**Contact FAB + form (floating companion, redesigned 2026-07-06):** ContactFab in the root layout — fixed TOP-right (top-20 right-6, below the navbar), icon-only asterisk button, always visible. Hover: a "Say hola" bubble unfolds leftward (width 0→auto, right-anchored) and the asterisk spins continuously (inner svg, 1.1s linear loop). Scroll: unbounded rotation, scrollY×0.25° through a spring (outer span) — inner and outer transforms compose. Opens a modal dialog (AnimatePresence, Escape/backdrop close, data-lenis-prevent, html overflow lock). Inputs keep cursor:text under the custom cursor; cursor z-index (10001/10002) sits above the dialog overlay (10000).
 
 **Real email sending (working in prod since 2026-07-06):** POST `/api/contact` route handler + Resend SDK (`from onboarding@resend.dev`, `to j.cleon695@gmail.com`, `replyTo` = visitor — camelCase; the runtime silently ignores snake_case `reply_to` and only the prod typecheck catches it). Hidden "company" honeypot field → fake 200 on bots. `RESEND_API_KEY` lives in `.env.local` (gitignored) and in Vercel project env (Production, Sensitive). Resend account is registered with j.cleon695@gmail.com (required for keyless-domain delivery, 100/day free).
 
@@ -47,6 +47,9 @@ Mix of two references — colors from one, animation techniques from the other:
 
 **Gotcha (Turbopack persistent cache):** if a newly added `@theme` token in globals.css doesn't generate its utility (even after restarting the dev server), wipe `.next` and restart — the persistent cache can serve stale compiled CSS.
 7. ~~Deploy (Vercel) + archive old Portffolio repo~~ ✅ **PLAN COMPLETE** (2026-07-06)
+
+## i18n (added 2026-07-06)
+Route-based EN/ES: `src/app/[locale]/{layout,page}.tsx` (no plain root layout — html/body live in [locale]/layout with `lang`), both locales prerendered via generateStaticParams. All UI strings in `src/lib/dictionary.ts` (`es` is typed against `en`, so a missing translation is a build error); projects/timeline data carry per-locale text. Locale detection in **`src/proxy.ts`** — Next 16 renamed the middleware convention to `proxy` (export `proxy`, not `middleware`); it redirects locale-less paths by Accept-Language (es* → /es, else /en), matcher skips api/_next/files. Toggle in the navbar: EN / ES links with aria-current. Brand wink flips per language: EN says "Say *hola*", ES says "Di *hello*".
 
 ## Deployment
 - **Live:** https://lucas-portfolio-puce-ten.vercel.app (Vercel project `lucasles-projects/lucas-portfolio`, fully static prerender)

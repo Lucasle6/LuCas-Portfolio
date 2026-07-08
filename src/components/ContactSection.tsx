@@ -1,7 +1,8 @@
 import Reveal from "@/components/Reveal";
 import RotatingAccent from "@/components/RotatingAccent";
+import type { Dictionary } from "@/lib/dictionary";
 
-export default function ContactSection() {
+export default function ContactSection({ dict }: { dict: Dictionary }) {
   return (
     <section
       id="contact"
@@ -12,19 +13,22 @@ export default function ContactSection() {
       <div className="relative mx-auto w-full max-w-6xl px-6 py-28">
         <Reveal>
           <p className="font-mono text-sm uppercase tracking-widest text-ink-muted">
-            {"// "}Contact
+            {"// "}
+            {dict.contact.eyebrow}
           </p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="mt-4 font-display text-6xl font-bold tracking-tight text-navy sm:text-8xl">
-            Say{" "}
-            <span className="font-accent font-medium italic">hola</span>.
+            {dict.contact.say}{" "}
+            <span className="font-accent font-medium italic">
+              {dict.contact.holaWord}
+            </span>
+            .
           </h2>
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mt-8 max-w-xl text-lg leading-8 text-ink-muted">
-            Have a project, a role, or just a question about something I
-            built? My inbox is open.
+            {dict.contact.paragraph}
           </p>
         </Reveal>
         <Reveal delay={0.3}>
@@ -37,13 +41,13 @@ export default function ContactSection() {
         </Reveal>
         <Reveal delay={0.4}>
           <p className="mt-8 font-mono text-xs uppercase tracking-widest text-ink-muted">
-            or grab the{" "}
+            {dict.contact.grabCv}{" "}
             <a
               href="/jose-luis-castaneda-leon-cv.pdf"
               download
               className="text-navy underline decoration-navy/25 underline-offset-4 transition-colors hover:decoration-navy"
             >
-              CV ↓
+              {dict.contact.cvWord}
             </a>
           </p>
         </Reveal>
