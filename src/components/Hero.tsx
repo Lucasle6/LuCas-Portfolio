@@ -44,7 +44,7 @@ export default function Hero({ dict }: { dict: Dictionary }) {
           <h1 className="mt-6 font-display text-5xl font-bold tracking-tight text-navy sm:text-7xl lg:text-8xl">
             <MagneticLetters text="José Luis" />
             <span className="block text-ink-muted/70">
-              <MagneticLetters text="Castañeda León." />
+              <MagneticLetters text="Castañeda León" />
             </span>
           </h1>
         </Reveal>
