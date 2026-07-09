@@ -122,4 +122,42 @@ export const timeline: Record<Locale, TimelineItem[]> = {
         "In Berlin und sofort verfügbar, baue öffentlich und suche ein Team, in dem Handwerk und Details zählen.",
     },
   ],
+  tr: [
+    {
+      period: "2013 – 2017",
+      title: "Mühendislik kökleri",
+      description:
+        "Tecnológico de Monterrey'de Mekatronik Mühendisliği — bir şeyler inşa etmenin (ve hata ayıklamanın) alışkanlığa dönüştüğü yer.",
+    },
+    {
+      period: "2017 – 2018",
+      title: "İlk geliştirici rolü",
+      description:
+        "Guadalajara'da Flex'te junior frontend; tedarik zinciri araçları için ES6, HTML5 ve CSS3, ve ilk uygulamalı React deneyimi.",
+    },
+    {
+      period: "2018 – 2023",
+      title: "Bosch'ta ölçek",
+      description:
+        "Günde 5.000+ kullanıcıya hizmet veren üretim platformları için React ve Angular SPA'ları; Redux, NgRx, gerçek bir test kültürü ve junior geliştiricilere mentorluk.",
+    },
+    {
+      period: "2023 – 2024",
+      title: "Berlin, yeni bir sayfa",
+      description:
+        "Yazılım Mühendisliği yüksek lisansı için Almanya'ya taşındım — University of Europe for Applied Sciences.",
+    },
+    {
+      period: "2024 – 2026",
+      title: "Karl Storz",
+      description:
+        "Klinik iç araçlar için frontend & fullstack; React, TypeScript, Clean Architecture ve %80+ test kapsamıyla GitLab CI/CD.",
+    },
+    {
+      period: "Şimdi",
+      title: "Sıradakine açık",
+      description:
+        "Berlin'de ve hemen müsait; herkese açık geliştiriyorum ve zanaatın ve detayın önemsendiği bir ekip arıyorum.",
+    },
+  ],
 };

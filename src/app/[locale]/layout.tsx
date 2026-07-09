@@ -9,20 +9,21 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { dictionaries, isLocale, locales } from "@/lib/dictionary";
 import "../globals.css";
 
+// latin-ext covers Turkish glyphs (ı, İ, ş, ğ) that plain latin lacks
 const sora = Sora({
   variable: "--font-sora",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 const firaSans = Fira_Sans({
   variable: "--font-fira-sans",
   weight: ["400", "500", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 // italic-only on purpose: it exists for single accent words, not paragraphs

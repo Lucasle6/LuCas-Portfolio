@@ -1,4 +1,4 @@
-export const locales = ["en", "es", "de"] as const;
+export const locales = ["en", "es", "de", "tr"] as const;
 export type Locale = (typeof locales)[number];
 
 /*
@@ -200,8 +200,73 @@ const de: typeof en = {
   },
 };
 
+const tr: typeof en = {
+  meta: {
+    title: "LuCas León — Frontend Geliştirici",
+    description:
+      "José Luis Castañeda León'un portfolyosu — 7+ yıllık React, Angular ve TypeScript deneyimiyle frontend geliştirici, Guadalajara'dan Berlin'e.",
+  },
+  nav: {
+    work: "Çalışmalar",
+    about: "Hakkımda",
+    contact: "İletişim",
+  },
+  hero: {
+    eyebrow: "Frontend Geliştirici · Berlin — Portfolyo 2026",
+    paragraph:
+      "Zahmetsiz hissettiren web arayüzleri geliştiriyorum. Yedi yıllık TypeScript, React ve Angular; Bosch'un fabrika sahalarından Berlin'deki Karl Storz'un klinik araçlarına kadar.",
+    ctaWork: "Çalışmalarımı gör",
+    ctaContact: "İletişime geç",
+    ctaCv: "CV indir ↓",
+  },
+  work: {
+    eyebrow: "Seçilmiş çalışmalar",
+    headline1: "localhost'un dışına",
+    headline2: "çıkan projeler.",
+    liveSite: "Canlı site",
+    code: "Kod",
+  },
+  tech: {
+    eyebrow: "Teknolojiler",
+    headline1: "Her günkü araç kutusu",
+    headline2: "yedi yılda şekillendi.",
+  },
+  about: {
+    eyebrow: "Hakkımda",
+    headline1: "İlk web sitesinden",
+    headline2: "full-stack ürünlere.",
+    bio1: "Ben José Luis Castañeda León — Guadalajara'dan Berlin'e, 7+ yıl deneyimli bir frontend geliştiricisiyim.",
+    bio2: "Bosch ve Karl Storz için React, Angular ve TypeScript ile her gün binlerce kişinin kullandığı arayüzler geliştirdim; bir ürünü fikirden yayına taşıyacak kadar da backend (Node, Python, Go) bilgisiyle. En çok, kullanıcıların hissettiği ama adını koymadığı detaylara önem veriyorum: hareket, hız, erişilebilirlik.",
+  },
+  contact: {
+    eyebrow: "İletişim",
+    say: "De",
+    // the wink greets in Spanish (his roots) on the non-Spanish pages
+    holaWord: "hola",
+    paragraph:
+      "Bir proje, bir pozisyon ya da geliştirdiğim bir şey hakkında bir soru mu var? Kutum her zaman açık.",
+    grabCv: "ya da",
+    cvWord: "CV'yi indir ↓",
+  },
+  form: {
+    name: "Ad",
+    email: "E-posta",
+    message: "Mesaj",
+    send: "Gönder ↗",
+    sending: "Gönderiliyor…",
+    close: "Kapat",
+    sentTitle: "Mesaj gönderildi ✓",
+    sentBody: "Teşekkürler — en kısa sürede döneceğim.",
+    errorBody: "Bir şeyler ters gitti — bana doğrudan şu adresten yaz:",
+  },
+  fab: {
+    label: "İletişim — de hola",
+    bubble: "De hola",
+  },
+};
+
 export type Dictionary = typeof en;
-export const dictionaries: Record<Locale, Dictionary> = { en, es, de };
+export const dictionaries: Record<Locale, Dictionary> = { en, es, de, tr };
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
