@@ -1,4 +1,4 @@
-export const locales = ["en", "es"] as const;
+export const locales = ["en", "es", "de"] as const;
 export type Locale = (typeof locales)[number];
 
 /*
@@ -135,8 +135,73 @@ const es: typeof en = {
   },
 };
 
+const de: typeof en = {
+  meta: {
+    title: "LuCas León — Frontend-Entwickler",
+    description:
+      "Portfolio von José Luis Castañeda León, Frontend-Entwickler mit über 7 Jahren React, Angular und TypeScript, von Guadalajara nach Berlin.",
+  },
+  nav: {
+    work: "Arbeiten",
+    about: "Über mich",
+    contact: "Kontakt",
+  },
+  hero: {
+    eyebrow: "Frontend-Entwickler · Berlin — Portfolio 2026",
+    paragraph:
+      "Ich baue Web-Interfaces, die sich mühelos anfühlen. Sieben Jahre TypeScript, React und Angular, von den Werkshallen bei Bosch bis zu den klinischen Tools von Karl Storz in Berlin.",
+    ctaWork: "Meine Arbeit ansehen",
+    ctaContact: "Kontakt aufnehmen",
+    ctaCv: "Lebenslauf ↓",
+  },
+  work: {
+    eyebrow: "Ausgewählte Arbeiten",
+    headline1: "Projekte, die es",
+    headline2: "aus dem localhost geschafft haben.",
+    liveSite: "Live-Seite",
+    code: "Code",
+  },
+  tech: {
+    eyebrow: "Technologien",
+    headline1: "Der Werkzeugkasten",
+    headline2: "in sieben Jahren gewachsen.",
+  },
+  about: {
+    eyebrow: "Über mich",
+    headline1: "Von der ersten Website",
+    headline2: "zu Full-Stack-Produkten.",
+    bio1: "Ich bin José Luis Castañeda León, Frontend-Entwickler mit über 7 Jahren Erfahrung, von Guadalajara nach Berlin.",
+    bio2: "Ich habe mit React, Angular und TypeScript für Bosch und Karl Storz gearbeitet, an Interfaces, die täglich Tausende nutzen, mit genug Backend (Node, Python, Go), um ein Produkt von der Idee bis zum Deployment zu bringen. Am wichtigsten sind mir die Details, die Nutzer spüren, aber nie benennen: Bewegung, Geschwindigkeit, Barrierefreiheit.",
+  },
+  contact: {
+    eyebrow: "Kontakt",
+    say: "Sag",
+    // the wink greets in Spanish (his roots) on the non-Spanish pages
+    holaWord: "hola",
+    paragraph:
+      "Ein Projekt, eine Stelle oder einfach eine Frage zu etwas, das ich gebaut habe? Mein Postfach ist offen.",
+    grabCv: "oder schnapp dir den",
+    cvWord: "CV ↓",
+  },
+  form: {
+    name: "Name",
+    email: "E-Mail",
+    message: "Nachricht",
+    send: "Senden ↗",
+    sending: "Wird gesendet…",
+    close: "Schließen",
+    sentTitle: "Nachricht gesendet ✓",
+    sentBody: "Danke — ich melde mich bald.",
+    errorBody: "Etwas ist schiefgelaufen — schreib mir direkt an",
+  },
+  fab: {
+    label: "Kontakt — sag hola",
+    bubble: "Sag hola",
+  },
+};
+
 export type Dictionary = typeof en;
-export const dictionaries: Record<Locale, Dictionary> = { en, es };
+export const dictionaries: Record<Locale, Dictionary> = { en, es, de };
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);

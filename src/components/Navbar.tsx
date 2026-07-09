@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import MagneticLetters from "@/components/MagneticLetters";
-import type { Dictionary, Locale } from "@/lib/dictionary";
+import { locales, type Dictionary, type Locale } from "@/lib/dictionary";
 
 export default function Navbar({
   locale,
@@ -42,33 +43,30 @@ export default function Navbar({
               </li>
             ))}
           </ul>
-          {/* language toggle: full navigation to the other locale's route */}
+          {/* language toggle: one link per locale, full navigation to
+              that locale's route — maps over `locales` so a new language
+              shows up here automatically */}
           <div className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider">
-            <Link
-              href="/en"
-              aria-current={locale === "en" ? "true" : undefined}
-              className={
-                locale === "en"
-                  ? "font-bold text-navy"
-                  : "text-ink-muted transition-colors hover:text-navy"
-              }
-            >
-              EN
-            </Link>
-            <span aria-hidden className="text-ink-muted/50">
-              /
-            </span>
-            <Link
-              href="/es"
-              aria-current={locale === "es" ? "true" : undefined}
-              className={
-                locale === "es"
-                  ? "font-bold text-navy"
-                  : "text-ink-muted transition-colors hover:text-navy"
-              }
-            >
-              ES
-            </Link>
+            {locales.map((loc, i) => (
+              <Fragment key={loc}>
+                {i > 0 && (
+                  <span aria-hidden className="text-ink-muted/50">
+                    /
+                  </span>
+                )}
+                <Link
+                  href={`/${loc}`}
+                  aria-current={locale === loc ? "true" : undefined}
+                  className={
+                    locale === loc
+                      ? "font-bold text-navy"
+                      : "text-ink-muted transition-colors hover:text-navy"
+                  }
+                >
+                  {loc}
+                </Link>
+              </Fragment>
+            ))}
           </div>
         </div>
       </nav>

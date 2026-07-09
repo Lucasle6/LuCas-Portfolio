@@ -84,4 +84,42 @@ export const timeline: Record<Locale, TimelineItem[]> = {
         "En Berlín y disponible de inmediato, construyendo en público y buscando un equipo donde el oficio y el detalle importen.",
     },
   ],
+  de: [
+    {
+      period: "2013 – 2017",
+      title: "Ingenieurwurzeln",
+      description:
+        "B.Eng. in Mechatronik am Tecnológico de Monterrey, wo das Bauen von Dingen (und das Debuggen) zur Gewohnheit wurde.",
+    },
+    {
+      period: "2017 – 2018",
+      title: "Erste Dev-Stelle",
+      description:
+        "Junior-Frontend bei Flex in Guadalajara, ES6, HTML5 und CSS3 für Supply-Chain-Tools, und erstes praktisches React.",
+    },
+    {
+      period: "2018 – 2023",
+      title: "Skalierung bei Bosch",
+      description:
+        "React- und Angular-SPAs für Fertigungsplattformen mit über 5.000 täglichen Nutzern, Redux, NgRx, echte Testing-Kultur und Mentoring von Juniors.",
+    },
+    {
+      period: "2023 – 2024",
+      title: "Berlin, neues Kapitel",
+      description:
+        "Umzug nach Deutschland für den M.Sc. in Software Engineering an der University of Europe for Applied Sciences.",
+    },
+    {
+      period: "2024 – 2026",
+      title: "Karl Storz",
+      description:
+        "Frontend & Fullstack für klinische interne Tools, React, TypeScript, Clean Architecture und GitLab CI/CD mit über 80% Testabdeckung.",
+    },
+    {
+      period: "Jetzt",
+      title: "Offen für das Nächste",
+      description:
+        "In Berlin und sofort verfügbar, baue öffentlich und suche ein Team, in dem Handwerk und Details zählen.",
+    },
+  ],
 };
