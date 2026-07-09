@@ -13,6 +13,9 @@ import {
 type TiltCardProps = {
   children: React.ReactNode;
   className?: string;
+  /** resting rotation in degrees — a small per-card value gives the
+      grid a controlled, scattered asymmetry; straightens on hover */
+  tilt?: number;
 };
 
 /*
@@ -23,9 +26,16 @@ type TiltCardProps = {
   2. Cursor spotlight — a radial navy tint that tracks the pointer
      via useMotionTemplate (a MotionValue-interpolated CSS string).
   3. Lift on hover, squash on tap.
-  All of it collapses to a plain div under prefers-reduced-motion.
+  On top of that, each card rests at a slight `tilt` and straightens
+  as you hover, so the four cards sit in a deliberate asymmetry.
+  All of it collapses to a plain (still slightly tilted) div under
+  prefers-reduced-motion.
 */
-export default function TiltCard({ children, className }: TiltCardProps) {
+export default function TiltCard({
+  children,
+  className,
+  tilt = 0,
+}: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
@@ -43,7 +53,13 @@ export default function TiltCard({ children, className }: TiltCardProps) {
   const spotlight = useMotionTemplate`radial-gradient(420px circle at ${glareX} ${glareY}, rgba(2, 0, 115, 0.08), transparent 65%)`;
 
   if (reduceMotion) {
-    return <div className={className}>{children}</div>;
+    // keep the resting asymmetry (a static transform isn't "motion"),
+    // just drop the pointer physics
+    return (
+      <div className={className} style={{ transform: `rotate(${tilt}deg)` }}>
+        {children}
+      </div>
+    );
   }
 
   function handlePointerMove(e: React.PointerEvent<HTMLDivElement>) {
@@ -62,8 +78,8 @@ export default function TiltCard({ children, className }: TiltCardProps) {
       ref={ref}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
-      whileHover={{ y: -8 }}
+      style={{ rotate: tilt, rotateX, rotateY, transformPerspective: 900 }}
+      whileHover={{ y: -8, rotate: 0 }}
       whileTap={{ scale: 0.98 }}
       className={`group relative h-full ${className ?? ""}`}
     >

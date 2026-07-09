@@ -38,7 +38,9 @@ export default function WorkSection({
               drift={i % 2 === 0 ? 24 : 56}
               className={i % 2 === 1 ? "sm:mt-12" : undefined}
             >
-              <TiltCard>
+              {/* controlled asymmetry: a small, deliberate resting tilt
+                  per card — a gentle pinwheel, not a random scatter */}
+              <TiltCard tilt={[-2.5, 2, 1.5, -2][i % 4]}>
                 <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-ink/5 bg-white p-8 shadow-sm transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-navy/10">
                   {project.image && (
                     // -mx-8/-mt-8 bleed the shot to the card edges past the padding
